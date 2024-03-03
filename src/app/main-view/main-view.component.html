@@ -1,0 +1,7 @@
+<div style="display: flex;">
+    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+        <a [routerLink]="['/movies', movie._id]">
+        <img src={{movie.ImagePath}} alt= {{movie.Title}} />
+        </a>
+    </mat-card>
+</div>
