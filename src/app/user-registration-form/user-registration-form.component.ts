@@ -25,18 +25,20 @@ ngOnInit(): void {
 }
 
 registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
-     this.dialogRef.close(); 
-     console.log(result);
-     this.snackBar.open('Signing up successful', 'OK', {
+    this.fetchApiData.userRegistration(this.userData).subscribe({
+    next: (result) => {
+      this.dialogRef.close();
+      console.log(result);
+      this.snackBar.open('Signing up successful', 'OK', {
         duration: 2000
-     });
-    }, (result) => {
+      });
+    },
+    error: (result) => {
       console.log(result);
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });
-    });
-  }
-
+    }
+  })
+}
 }
