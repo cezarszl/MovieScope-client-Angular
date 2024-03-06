@@ -1,0 +1,32 @@
+.main-container {
+  padding-top: 100px;
+}
+
+.main-container:hover .movie-img {
+  opacity: 0.4;
+}
+
+.mc-container {
+  margin-bottom: 200px;
+
+  .movieCard {
+    margin-bottom: 200px;
+    background-color: #000;
+  }
+  .movie-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    -webkit-box-reflect: below 2px
+      linear-gradient(transparent, transparent, #0004);
+
+    transform-origin: center;
+    transform: perspective(800px) rotateY(25deg);
+    transition: 0.5s;
+  }
+  .movie-img:hover {
+    transform: perspective(800px) rotateY(0deg);
+    opacity: 1;
+  }
+}

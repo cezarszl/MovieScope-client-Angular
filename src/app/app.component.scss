@@ -3,9 +3,18 @@ mat-sidenav-content,
 mat-sidenav {
   height: 100%;
 }
+mat-sidenav-container {
+  background-color: #000;
+}
 mat-sidenav {
   width: 250px;
 }
+mat-sidenav:hover .movie-img {
+  opacity: 0.4;
+}
 main {
   padding: 10px;
+}
+main:hover .movie-img {
+  opacity: 0.4;
 }

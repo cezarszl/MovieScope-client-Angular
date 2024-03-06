@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'myFlix-Angular-client';
 
-  constructor() {}
+  constructor() { }
 
- 
+
 }
 
 

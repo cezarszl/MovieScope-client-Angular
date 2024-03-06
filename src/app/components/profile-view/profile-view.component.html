@@ -1,27 +1,41 @@
-<form [formGroup]="profileForm">
-  <label>
-    Username:
-    <input type="text" [formControl]="profileForm.controls.username" >
-  </label>
-   <label>
-    Password:
-    <input type="text" [formControl]="profileForm.controls.password">
-  </label>
-  <label>
-    Email:
-    <input type="text" [formControl]="profileForm.controls.email">
-  </label>
-  <label>
-    Birthday:
-    <input type="date" [formControl]="profileForm.controls.birthday">
-  </label>
-  <button type="submit" (click)="onSubmit()">Update profile</button>
-</form>
-<div style="display: flex;">
+<div class="updateBox">
+  <h2>Update your profile</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+    <div class="formBox">
+      <input type="text" [formControl]="profileForm.controls.username" required>
+      <label for="username">Username</label>
+    </div>
 
-    <mat-card *ngFor="let movie of favouriteMovies;" style="flex: 1 1 auto;">
-        <a [routerLink]="['/movies', movie._id]">
-        <img src={{movie.ImagePath}} alt= {{movie.Title}} />
-        </a>
+    <div class="formBox">
+      <input type="text" [formControl]="profileForm.controls.password" required>
+      <label for="password">Password</label>
+    </div>
+
+    <div class="formBox">
+      <input type="text" [formControl]="profileForm.controls.email" required>
+      <label for="email">Email</label>
+    </div>
+
+    <div class="formBox">
+      <input type="date" [formControl]="profileForm.controls.birthday" required>
+      <label class="birthdayLabel" for="birthday">Birthday</label>
+    </div>
+    <button id="updateBtn" type="submit">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Update
+    </button>
+  </form>
+</div>
+<div class="fm-container">
+  <h2>Your favorite movies</h2>
+  <div fxLayout="row wrap">
+    <mat-card class="mc-container" fxFlex="25%" *ngFor="let movie of favouriteMovies;">
+      <a [routerLink]="['/movies', movie._id]">
+        <img src={{movie.ImagePath}} alt={{movie.Title}} />
+      </a>
     </mat-card>
+  </div>
 </div>
