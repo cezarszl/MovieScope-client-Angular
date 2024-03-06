@@ -1,23 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 
+/**
+ * Component for displaying the main view, including a list of movies.
+ */
 @Component({
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
-  styleUrl: './main-view.component.scss'
+  styleUrls: ['./main-view.component.scss']
 })
-export class MainViewComponent {
+export class MainViewComponent implements OnInit {
+  /**
+   * Array to store the list of movies.
+   */
   movies: any[] = [];
-  constructor(public MovieService: MovieService) { }
 
-ngOnInit(): void {
-  this.getMovies();
-}
+  /**
+   * Constructs a new MainViewComponent instance.
+   * @param movieService The MovieService instance for fetching movies.
+   */
+  constructor(public movieService: MovieService) { }
 
-getMovies(): void {
-  this.MovieService.getMovies().subscribe((resp: any) => {
+  /**
+   * Lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
+   */
+  ngOnInit(): void {
+    this.getMovies();
+  }
+
+  /**
+   * Fetches the list of movies from the MovieService.
+   * Updates the 'movies' array with the fetched data.
+   */
+  getMovies(): void {
+    this.movieService.getMovies().subscribe((resp: any) => {
       this.movies = resp;
-      return this.movies;
     });
   }
 }

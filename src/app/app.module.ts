@@ -25,7 +25,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 
-//Components 
+// Components
 import { MainViewComponent } from './components/main-view/main-view.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 import { LoginComponent } from './components/login/login.component';
@@ -36,9 +36,9 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { GenreViewComponent } from './components/genre-view/genre-view.component';
 import { DirectorViewComponent } from './components/director-view/director-view.component';
 
-
-
-
+/**
+ * NgModule to define the application module.
+ */
 @NgModule({
   declarations: [
     AppComponent,

@@ -4,31 +4,61 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieService } from '../../services/movie.service';
 import { UserService } from '../../services/user.service';
 
-
+/**
+ * Component for displaying details of a single movie.
+ */
 @Component({
   selector: 'app-movie-view',
   templateUrl: './movie-view.component.html',
-  styleUrl: './movie-view.component.scss',
+  styleUrls: ['./movie-view.component.scss'],
 })
 export class MovieViewComponent implements OnInit {
+  /**
+   * Array of all movies.
+   */
   movies: any[] = [];
+
+  /**
+   * Currently selected movie.
+   */
   movie: any;
+
+  /**
+   * Array of similar movies.
+   */
   similarMovies: any[] = [];
+
+  /**
+   * Flag indicating whether the movie is in favorites.
+   */
   isFavourite = false;
 
+  /**
+   * Constructor.
+   * @param route - ActivatedRoute instance.
+   * @param snackBar - MatSnackBar instance.
+   * @param movieService - MovieService instance.
+   * @param userService - UserService instance.
+   */
   constructor(
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private MovieService: MovieService,
-    private UserService: UserService
+    private movieService: MovieService,
+    private userService: UserService
   ) { }
 
+  /**
+   * Lifecycle hook called after component initialization.
+   */
   ngOnInit(): void {
     this.getMovie();
   }
 
+  /**
+   * Retrieves the selected movie.
+   */
   getMovie(): void {
-    this.MovieService.getMovies().subscribe((resp: any) => {
+    this.movieService.getMovies().subscribe((resp: any) => {
       this.movies = resp;
       this.route.paramMap.subscribe((params) => {
         const id = params.get('id');
@@ -37,10 +67,12 @@ export class MovieViewComponent implements OnInit {
         const movieId = this.movie._id;
         this.isFavourite = this.checkIfFavourite(movieId);
       });
-
-
     });
   }
+
+  /**
+   * Retrieves similar movies.
+   */
   getSimilarMovies(): void {
     const selectedMovie = this.movie;
     this.similarMovies = this.movies.filter((m) => {
@@ -49,7 +81,11 @@ export class MovieViewComponent implements OnInit {
       );
     });
   }
-  toggleFavourite() {
+
+  /**
+   * Toggles the favorite status of the movie.
+   */
+  toggleFavourite(): void {
     let username: string | null = null;
     const userDataString = localStorage.getItem('userData');
     if (userDataString) {
@@ -60,8 +96,7 @@ export class MovieViewComponent implements OnInit {
       return;
     }
     if (this.isFavourite) {
-      // If the movie is already a favorite, remove it from the list of favorite movies
-      this.UserService
+      this.userService
         .deleteFavouriteMovie(username, this.movie._id)
         .subscribe(() => {
           this.isFavourite = false;
@@ -70,8 +105,7 @@ export class MovieViewComponent implements OnInit {
           });
         });
     } else {
-      // If the movie is not a favorite, add it to the list of favorite movies
-      this.UserService
+      this.userService
         .addFavouriteMovie(username, this.movie._id)
         .subscribe(() => {
           this.isFavourite = true;
@@ -81,13 +115,19 @@ export class MovieViewComponent implements OnInit {
         });
     }
   }
+
+  /**
+   * Checks if the movie is in favorites.
+   * @param movieId - ID of the movie.
+   * @returns Whether the movie is in favorites.
+   */
   checkIfFavourite(movieId: string): boolean {
     const userDataString = localStorage.getItem('userData');
     if (!userDataString) {
       return false;
     }
     const userData = JSON.parse(userDataString);
-    const favouriteMovies = userData.FavouriteMovies || []; // If FavouriteMovies is not present, default to an empty array
+    const favouriteMovies = userData.FavouriteMovies || [];
     return favouriteMovies.includes(movieId);
   }
 }

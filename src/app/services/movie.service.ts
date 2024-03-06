@@ -6,16 +6,33 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError, map } from 'rxjs';
 
+/**
+ * Injectable service for managing movie data.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
-  constructor(private http: HttpClient) {}
+  /**
+   * Constructs a new MovieService instance.
+   * @param http The HttpClient instance to make HTTP requests.
+   */
+  constructor(private http: HttpClient) { }
 
+  /**
+   * The base URL of the API.
+   */
   private apiUrl = 'https://cezarszlmyflix-0212aa467a8d.herokuapp.com';
 
+  /**
+   * The authentication secret key.
+   */
   private authSecretKey = 'token';
 
+  /**
+   * Gets the HTTP headers for requests.
+   * @returns The HttpHeaders object containing the necessary headers.
+   */
   private getHeaders(): HttpHeaders {
     const authToken = localStorage.getItem(this.authSecretKey);
     return new HttpHeaders({
@@ -23,18 +40,33 @@ export class MovieService {
       Authorization: `Bearer ${authToken}`
     });
   }
-  getMovies() : Observable<any> { 
+
+  /**
+   * Retrieves a list of movies from the API.
+   * @returns An Observable that emits the movie data.
+   */
+  getMovies(): Observable<any> {
     const headers = this.getHeaders();
     return this.http.get<any>(`${this.apiUrl}/movies`, { headers })
-    .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Non-typed response extraction
+  /**
+   * Extracts data from the HTTP response.
+   * @param res The HTTP response object.
+   * @returns The extracted data.
+   */
   private extractResponseData(res: any): any {
     const body = res;
     return body || {};
   }
 
+  /**
+   * Handles errors that occur during HTTP requests.
+   * @param error The HttpErrorResponse object representing the error.
+   * @returns An error message.
+   * @throws An error indicating that something bad happened.
+   */
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
