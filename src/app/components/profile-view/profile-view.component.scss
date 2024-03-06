@@ -2,7 +2,7 @@
   position: relative;
   left: 50%;
   width: 300px !important;
-  margin-top: 100px;
+  margin-top: 50px;
   transform: translate(-50%, 0%);
   text-align: center;
   ::-webkit-calendar-picker-indicator {
@@ -10,7 +10,7 @@
   }
   h2 {
     margin: 0 0 30px;
-    padding: 0;
+    padding-bottom: 50px;
     color: #fff;
     text-align: center;
   }
@@ -93,7 +93,6 @@
     overflow: hidden;
     transition: 0.5s;
     margin-top: 40px;
-    // margin-bottom: 40px;
     letter-spacing: 4px;
 
     span {

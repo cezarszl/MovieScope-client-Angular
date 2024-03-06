@@ -31,7 +31,7 @@
 </div>
 <div class="fm-container">
   <h2>Your favorite movies</h2>
-  <div fxLayout="row wrap">
+  <div fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="mc-container" fxFlex="25%" *ngFor="let movie of favouriteMovies;">
       <a [routerLink]="['/movies', movie._id]">
         <img src={{movie.ImagePath}} alt={{movie.Title}} />

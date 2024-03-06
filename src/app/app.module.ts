@@ -33,6 +33,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { MovieViewComponent } from './components/movie-view/movie-view.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { GenreViewComponent } from './components/genre-view/genre-view.component';
+import { DirectorViewComponent } from './components/director-view/director-view.component';
 
 
 
@@ -47,6 +49,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     SignupComponent,
     MovieViewComponent,
     SidenavListComponent,
+    GenreViewComponent,
+    DirectorViewComponent,
   ],
   imports: [
     BrowserModule,

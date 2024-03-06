@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../../services/fetch-api-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieService } from '../../services/movie.service';
@@ -18,15 +17,14 @@ export class MovieViewComponent implements OnInit {
   isFavourite = false;
 
   constructor(
-    public fetchApiData: FetchApiDataService,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private MovieService: MovieService,
     private UserService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.getMovie(); 
+    this.getMovie();
   }
 
   getMovie(): void {
@@ -39,7 +37,7 @@ export class MovieViewComponent implements OnInit {
         const movieId = this.movie._id;
         this.isFavourite = this.checkIfFavourite(movieId);
       });
-      
+
 
     });
   }

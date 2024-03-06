@@ -1,67 +1,44 @@
-<mat-card class = "card-container">
-    <mat-card-header style = "justify-content: center; align-items: center; text-align: center;">
-        <mat-card-title >
-            <h1>
-                {{movie?.Title}}
-            </h1>            
-        </mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content class = "content-row">
-        <div class="image-container">
-            <img [src]= "movie?.ImagePath" [alt] = "'Image of ' + movie?.Title">
-        </div>
-        <div class="info-container">
-            <h2>
-                Description: 
-            </h2>
-            <p>
-                {{movie?.Description}}
-            </p>
-            <h2>
-                Director: 
-            </h2>
-            <p>
-                {{movie?.Director.Name}}
-            </p>
-            <h2>
-                Genre:
-            </h2>
-            <p>
-                {{movie?.Genre.Name}}
-            </p>
-        </div>
-    </mat-card-content>
-    <button [routerLink]="'/movies'">Go back</button>
-</mat-card>
-<mat-card-content>
-        <h2>
-            You may also like:
-        </h2>
-        <div class = "similar-card-container">
-            <mat-card *ngFor="let movie of similarMovies; let i=index" class="similar-card">
-                <div class="similar-image-container">
-                    <a [routerLink]="['/movies', movie._id]">
-                    <img 
-                        class="similar-movie-image"
-                        src={{movie.ImagePath}}
-                    />
-                    </a>
-                </div> 
-                <mat-card-header style="margin: 0 auto">
-                    <mat-card-title
-                        style = "
-                            font-size: 1em;
-                            white-space: nowrap;
-                            overflow: hidden;
-                        "        
-                    >
-                        {{movie.Title}}
-                    </mat-card-title>
-                </mat-card-header>
+<div class="mi-container">
+    <div fxLayout="row" fxLayoutAlign="center">
+        <div fxFlex="50">
+            <mat-card class="mi-imgcard">
+                <img class="mi-img" [src]="movie?.ImagePath" [alt]="'Image of ' + movie?.Title"> />
             </mat-card>
-        </div> 
-    </mat-card-content> 
-    <button (click)="toggleFavourite()">
-    {{ isFavourite ? 'Remove from Favorites' : 'Add to Favorites' }}
-    </button>
+        </div>
+
+        <div fxFlex="50">
+            <mat-card class="mi-infocard">
+                <mat-card-content>
+                    <h2 class="card-title">{{ movie?.Title }}</h2>
+                    <p class="description">{{movie?.Description}}</p>
+
+                    <p class="card-text"><span>Genre:</span> {{movie?.Genre.Name}}</p>
+                    <p class="card-text"><span>Director:</span> {{movie?.Director.Name}}</p>
+                    <p class="card-text"><span>Release Date:</span> {{ movie?.ReleaseDate | date: 'shortDate' }}</p>
+                </mat-card-content>
+                <div fxLayout="row" fxLayoutAlign="space-evenly" class="btns-col">
+                    <button class="backBtn" [routerLink]="['/']">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Go Back
+                    </button>
+                    <button class="backBtn" (click)="toggleFavourite()">
+                        <mat-icon> {{ isFavourite ? 'thumb_down' : 'thumb_up' }}</mat-icon>
+                    </button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div class="sm-container">
+    <h2>You may also like</h2>
+    <div fxLayout="row wrap" fxLayoutAlign="center">
+        <mat-card class="mc-container" fxFlex="25%" *ngFor="let movie of similarMovies;">
+            <a [routerLink]="['/movies', movie._id]">
+                <img src={{movie.ImagePath}} alt={{movie.Title}} />
+            </a>
+        </mat-card>
+    </div>
+</div>
