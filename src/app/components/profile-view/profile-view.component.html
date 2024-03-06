@@ -1,0 +1,27 @@
+<form [formGroup]="profileForm">
+  <label>
+    Username:
+    <input type="text" [formControl]="profileForm.controls.username" >
+  </label>
+   <label>
+    Password:
+    <input type="text" [formControl]="profileForm.controls.password">
+  </label>
+  <label>
+    Email:
+    <input type="text" [formControl]="profileForm.controls.email">
+  </label>
+  <label>
+    Birthday:
+    <input type="date" [formControl]="profileForm.controls.birthday">
+  </label>
+  <button type="submit" (click)="onSubmit()">Update profile</button>
+</form>
+<div style="display: flex;">
+
+    <mat-card *ngFor="let movie of favouriteMovies;" style="flex: 1 1 auto;">
+        <a [routerLink]="['/movies', movie._id]">
+        <img src={{movie.ImagePath}} alt= {{movie.Title}} />
+        </a>
+    </mat-card>
+</div>
