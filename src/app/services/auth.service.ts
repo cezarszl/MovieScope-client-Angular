@@ -9,6 +9,7 @@ export class AuthService {
 
   private isAuthenticated = false;
   private authSecretKey = 'token';
+  private user = 'userData';
   private apiUrl = 'https://cezarszlmyflix-0212aa467a8d.herokuapp.com';
 
   constructor(private http: HttpClient) {
@@ -24,7 +25,7 @@ export class AuthService {
         const authToken = response.token;
         if (authToken) {
           localStorage.setItem(this.authSecretKey, authToken);
-          localStorage.setItem("userData", response.user);
+          localStorage.setItem(this.user, JSON.stringify(response.user));
           this.isAuthenticated = true;
           return true;
         } else {

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../../fetch-api-data.service';
+import { FetchApiDataService } from '../../services/fetch-api-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MovieService } from '../../services/movie.service';
+import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-movie-view',
@@ -17,7 +20,9 @@ export class MovieViewComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private MovieService: MovieService,
+    private UserService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +30,7 @@ export class MovieViewComponent implements OnInit {
   }
 
   getMovie(): void {
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+    this.MovieService.getMovies().subscribe((resp: any) => {
       this.movies = resp;
       this.route.paramMap.subscribe((params) => {
         const id = params.get('id');
@@ -58,7 +63,7 @@ export class MovieViewComponent implements OnInit {
     }
     if (this.isFavourite) {
       // If the movie is already a favorite, remove it from the list of favorite movies
-      this.fetchApiData
+      this.UserService
         .deleteFavouriteMovie(username, this.movie._id)
         .subscribe(() => {
           this.isFavourite = false;
@@ -68,7 +73,7 @@ export class MovieViewComponent implements OnInit {
         });
     } else {
       // If the movie is not a favorite, add it to the list of favorite movies
-      this.fetchApiData
+      this.UserService
         .addFavouriteMovie(username, this.movie._id)
         .subscribe(() => {
           this.isFavourite = true;

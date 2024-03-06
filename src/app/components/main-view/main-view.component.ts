@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FetchApiDataService } from '../../fetch-api-data.service';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-main-view',
@@ -8,14 +8,14 @@ import { FetchApiDataService } from '../../fetch-api-data.service';
 })
 export class MainViewComponent {
   movies: any[] = [];
-  constructor(public fetchApiData: FetchApiDataService) { }
+  constructor(public MovieService: MovieService) { }
 
 ngOnInit(): void {
   this.getMovies();
 }
 
 getMovies(): void {
-  this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+  this.MovieService.getMovies().subscribe((resp: any) => {
       this.movies = resp;
       return this.movies;
     });

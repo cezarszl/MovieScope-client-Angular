@@ -12,9 +12,9 @@ import { Observable, catchError, map } from 'rxjs';
 export class MovieService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'https://cezarszlmyflix-0212aa467a8d.herokuapp.com/';
+  private apiUrl = 'https://cezarszlmyflix-0212aa467a8d.herokuapp.com';
 
-  private authSecretKey = 'Bearer Token';
+  private authSecretKey = 'token';
 
   private getHeaders(): HttpHeaders {
     const authToken = localStorage.getItem(this.authSecretKey);
