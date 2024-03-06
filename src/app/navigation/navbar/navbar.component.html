@@ -1,0 +1,33 @@
+<!-- <nav class="navbar">
+  <div class="navbar-logo"></div>
+  <ul>
+    <li *ngIf="!isLoggedIn()"><a routerLink="/login">Login</a></li>
+    <li *ngIf="!isLoggedIn()"><a routerLink="/signup">Sign up</a></li>
+    <li *ngIf="isLoggedIn()"><a routerLink="/">Home</a></li>
+    <li *ngIf="isLoggedIn()"><a routerLink="/profile">Profile</a></li>
+    <li *ngIf="isLoggedIn()"><a (click)="logout()">Logout</a></li>
+  </ul>
+  <div class="navbar-actions">
+    Add login/logout buttons or user-related actions here
+  </div>
+</nav> -->
+<mat-toolbar class="toolbar">
+  <div fxHide.gt-xs fxFlex fxLayout fxLayoutAlign="end">
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+
+      <li *ngIf="isLoggedIn()"><a routerLink="/">Home</a></li>
+      <li *ngIf="!isLoggedIn()"><a routerLink="/login">Login</a></li>
+      <li *ngIf="!isLoggedIn()"><a routerLink="/signup">Sign up</a></li>
+      <li *ngIf="isLoggedIn()"><a routerLink="/profile">Profile</a></li>
+      <li *ngIf="isLoggedIn()"><a (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <img src="../../../assets/clapper.svg">
+  </div>
+</mat-toolbar>
