@@ -1,1 +1,11 @@
-<p>director-view works!</p>
+<mat-card class="director-dialog">
+    <mat-card-title>
+        <h2 class="director-dialog-title">{{ data.director.Name }}</h2>
+    </mat-card-title>
+    <mat-dialog-content class="director-dialog-content">
+        <b>Born: </b>{{ data.director.Birth }}
+        <br />
+        <br />
+        <b>Bio: </b>{{ data.director.Bio }}
+    </mat-dialog-content>
+</mat-card>

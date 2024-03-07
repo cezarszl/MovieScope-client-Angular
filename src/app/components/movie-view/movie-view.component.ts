@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieService } from '../../services/movie.service';
 import { UserService } from '../../services/user.service';
+import { GenreViewComponent } from '../genre-view/genre-view.component';
+import { DirectorViewComponent } from '../director-view/director-view.component';
+import { MatDialog } from '@angular/material/dialog';
 
 /**
  * Component for displaying details of a single movie.
@@ -13,6 +16,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./movie-view.component.scss'],
 })
 export class MovieViewComponent implements OnInit {
+
   /**
    * Array of all movies.
    */
@@ -39,12 +43,14 @@ export class MovieViewComponent implements OnInit {
    * @param snackBar - MatSnackBar instance.
    * @param movieService - MovieService instance.
    * @param userService - UserService instance.
+   * @param dialog - MatDialog instance.
    */
   constructor(
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private movieService: MovieService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) { }
 
   /**
@@ -129,5 +135,19 @@ export class MovieViewComponent implements OnInit {
     const userData = JSON.parse(userDataString);
     const favouriteMovies = userData.FavouriteMovies || [];
     return favouriteMovies.includes(movieId);
+  }
+
+  /**
+   * Opens a dialog displaying genre details.
+   */
+  openGenreDetailsDialog(): void {
+    this.dialog.open(GenreViewComponent, { width: '400px', data: { genre: this.movie.Genre } });
+  }
+
+  /**
+   * Opens a dialog displaying director details.
+   */
+  openDirectorDetailsDialog(): void {
+    this.dialog.open(DirectorViewComponent, { width: '400px', data: { director: this.movie.Director } });
   }
 }

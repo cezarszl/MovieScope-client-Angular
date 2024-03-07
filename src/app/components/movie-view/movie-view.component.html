@@ -12,8 +12,10 @@
                     <h2 class="card-title">{{ movie?.Title }}</h2>
                     <p class="description">{{movie?.Description}}</p>
 
-                    <p class="card-text"><span>Genre:</span> {{movie?.Genre.Name}}</p>
-                    <p class="card-text"><span>Director:</span> {{movie?.Director.Name}}</p>
+                    <p (click)="openGenreDetailsDialog()" class="card-text"><span>Genre:</span> {{movie?.Genre.Name}}
+                    </p>
+                    <p (click)="openDirectorDetailsDialog()" class="card-text"><span>Director:</span>
+                        {{movie?.Director.Name}}</p>
                     <p class="card-text"><span>Release Date:</span> {{ movie?.ReleaseDate | date: 'shortDate' }}</p>
                 </mat-card-content>
                 <div fxLayout="row" fxLayoutAlign="space-evenly" class="btns-col">

@@ -8,7 +8,7 @@ import { authForMoviesGuard } from './guards/auth-for-movies.guard';
 import { MovieViewComponent } from './components/movie-view/movie-view.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 import { SignupComponent } from './components/signup/signup.component';
-
+import { GenreViewComponent } from './components/genre-view/genre-view.component';
 /**
  * Defines the routes of the application.
  */
@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent, canActivate: [authForLoginGuard] },
   { path: 'movies', component: MainViewComponent, canActivate: [authForMoviesGuard] },
   { path: 'movies/:id', component: MovieViewComponent, canActivate: [authForMoviesGuard] },
+  { path: 'movies/:id', component: GenreViewComponent, canActivate: [authForMoviesGuard] },
   { path: 'profile', component: ProfileViewComponent, canActivate: [authForMoviesGuard] },
   { path: '**', component: MainViewComponent, pathMatch: 'full', canActivate: [authForMoviesGuard] },
   { path: '', redirectTo: '/movies', pathMatch: 'full' }
