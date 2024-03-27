@@ -1,4 +1,4 @@
-# MyFlixAngularClient
+# MovieScope Angular Client
 
 This is a movie database web application built with Angular that allows users to explore information about movies, directors, and genres. Users can create profiles to save data about their favorite movies.
 
