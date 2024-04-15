@@ -20,6 +20,6 @@ Clone the repository and install dependencies:
 git clone https://github.com/cezarszl/MovieScope-client-Angular.git
 cd MovieScope-client-Angular
 npm install
-
+```
 ## Live Demo
 Check out the live demo of the application here: [MovieScope Angular Client Demo](https://cezarszl.github.io/MovieScope-client-Angular/movies)
