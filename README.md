@@ -13,6 +13,7 @@ MovieScope is an Angular-based application that serves as a movie database, allo
 - Angular
 - Angular Material
 - Node.js
+- TypeScript
 
 ## Development Setup
 Clone the repository and install dependencies:
