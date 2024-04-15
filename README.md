@@ -1,31 +1,25 @@
-# MovieScope Angular Client
+# MovieScope Client (Angular)
 
-This is a movie database web application built with Angular that allows users to explore information about movies, directors, and genres. Users can create profiles to save data about their favorite movies.
+## Introduction
+MovieScope is an Angular-based application that serves as a movie database, allowing users to explore detailed information about movies, directors, and genres. Users can register to create profiles and save their favorite movies.
 
-## User Stories
+## Features
+- **User Authentication:** Registration and login functionality for personalized experiences.
+- **Movie Exploration:** Access to a vast array of movie details after logging in.
+- **Detailed Views:** Includes director and genre specifics for each movie.
+- **Favorite Management:** Users can save movies they like to their profile.
 
-- As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
-- As a user, I want to be able to create a profile so I can save data about my favorite movies.
-
-## Key Features
-
-- Welcome view where users can log in or register an account.
-- Authentication system for registered users.
-- Display all movies upon authentication.
-- Single movie view with additional features:
-  - Button to view details about the director.
-  - Button to view details about the genre.
-
-## Usage
-
-1. Visit the application in your browser.
-2. Register an account or log in if you already have one.
-3. Explore movies, directors, and genres.
-4. Save your favorite movies to your profile.
-
-## Acknowledgements
-
+## Technologies Used
 - Angular
 - Angular Material
 - Node.js
-- npm
+
+## Development Setup
+Clone the repository and install dependencies:
+```bash
+git clone https://github.com/cezarszl/MovieScope-client-Angular.git
+cd MovieScope-client-Angular
+npm install
+
+## Live Demo
+Check out the live demo of the application here: [MovieScope Angular Client Demo](https://cezarszl.github.io/MovieScope-client-Angular/movies)
