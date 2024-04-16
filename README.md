@@ -23,4 +23,4 @@ cd MovieScope-client-Angular
 npm install
 ```
 ## Live Demo
-Check out the live demo of the application here: [MovieScope Angular Client Demo](https://cezarszl.github.io/MovieScope-client-Angular/movies)
+Check out the live demo of the application here: [MovieScope Angular Client Demo](https://cezarszl.github.io/MovieScope-client-Angular/)
